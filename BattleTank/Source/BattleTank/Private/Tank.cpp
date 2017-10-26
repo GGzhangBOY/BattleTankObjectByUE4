@@ -15,7 +15,7 @@ ATank::ATank()
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAtWorldSpace(HitLocation);
+	TankAimingComponent->AimAtWorldSpace(HitLocation, LaunchSpeed);
 	auto ThisTankName = GetName();
 	//UE_LOG(LogTemp, Warning, TEXT("Tank: %s aim at: %s"), *ThisTankName, *HitLocation.ToString()) (Log转移到了TankAimingCompontent 中的 AimAtWorldSpace)
 }
@@ -27,7 +27,7 @@ void ATank::BeginPlay()
 	
 }
 
-void ATank::SetBarrelRef(UStaticMeshComponent* BarrelToSet)
+void ATank::SetBarrelRef(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelRef(BarrelToSet);
 }
