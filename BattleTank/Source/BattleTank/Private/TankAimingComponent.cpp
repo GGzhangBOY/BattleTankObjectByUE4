@@ -62,6 +62,10 @@ void UTankAimingComponent::AimAtWorldSpace(FVector HitLocation,float LaunchSpeed
 		MoveBarrel(AimDirection);
 		//UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *AimDirection.ToString())
 	}
+	else
+	{
+		UE_LOG(LogTemp,Warning,TEXT("No solution found to hit at this location!"))
+	}
 	//UE_LOG(LogTemp, Warning, TEXT("Tank: %s aim at: %s from %s with the speed of %f"), *ThisTankName, *HitLocation.ToString(),*BarrelLocation.ToString(),LaunchSpeed)
 }
 
@@ -72,5 +76,5 @@ void UTankAimingComponent::AimAtWorldSpace(FVector HitLocation,float LaunchSpeed
 		auto AimAsRotation = VectorToPointAt.Rotation();
 		auto DeltaRotation = AimAsRotation - BarrelRotator;
 		//UE_LOG(LogTemp, Warning, TEXT("Aiming at %s, Left %s to rotate On brand new Visual Studio"), *AimAsRotation.ToString(), *DeltaRotation.ToString())
-			Barrel->Elevate(5);
+			Barrel->Elevate(DeltaRotation.Pitch);
 	}

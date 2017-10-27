@@ -20,7 +20,7 @@ public:
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable,Category = SetUp)
-	void SetBarrelRef(UTankBarrel* BarrelToSet);
+	void SetBarrelRef(UTankBarrel* BarrelToSet);//因为Tank是Pawn类，所以主炮引用只能由这里向蓝图中进行暴露
 
 protected:
 	UTankAimingComponent* TankAimingComponent = NULL;
