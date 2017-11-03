@@ -7,6 +7,7 @@
 #include "Tank.generated.h"
 
 class UTankBarrel;
+class UTankTurret;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -22,6 +23,12 @@ public:
 	UFUNCTION(BlueprintCallable,Category = SetUp)
 	void SetBarrelRef(UTankBarrel* BarrelToSet);//因为Tank是Pawn类，所以主炮引用只能由这里向蓝图中进行暴露
 
+	UFUNCTION(BlueprintCallable, Category = SetUp)
+		void SetTurretRef(UTankTurret* TurretToSet);
+
+	UFUNCTION(BlueprintCallable, Category = SetUp)
+		void Firing();//TODO
+
 protected:
 	UTankAimingComponent* TankAimingComponent = NULL;
 private:
@@ -35,5 +42,5 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
  
 	UPROPERTY(EditAnywhere, Category = Firing)
-		float LaunchSpeed = 100000;		//Get the launch speed of 1000m/s
+		float LaunchSpeed = 80000;		//Get the launch speed of 800m/s
 };

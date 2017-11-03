@@ -6,6 +6,7 @@
 #include "TankAimingComponent.generated.h"
 //在这里可以用前置声明，但是在CPP文件中不能够用前置声明，因为CPP文件中需要用到头文件中的特定方法，必须要包含整个头文件
 class UTankBarrel;
+class UTankTurret;
 //Give the tank ablity to aim at something through it's barrel
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
@@ -17,6 +18,8 @@ public:
 	UTankAimingComponent();
 
 	void SetBarrelRef(UTankBarrel* BarrelToSet);
+
+	void SetTurretRef(UTankTurret* TurretToSet);
 
 protected:
 	// Called when the game starts
@@ -34,6 +37,7 @@ public:
 	
 private:
 	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 
 	// TODO SetTurretReference
 

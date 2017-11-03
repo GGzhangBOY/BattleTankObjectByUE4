@@ -3,6 +3,7 @@
 #include "BattleTank.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
 
 
 // Sets default values for this component's properties
@@ -28,6 +29,11 @@ void UTankAimingComponent::BeginPlay()
 void UTankAimingComponent::SetBarrelRef(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
+}
+
+void UTankAimingComponent::SetTurretRef(UTankTurret * TurretToSet)
+{
+	Turret = TurretToSet;
 }
 
 // Called every frame
@@ -77,4 +83,5 @@ void UTankAimingComponent::AimAtWorldSpace(FVector HitLocation,float LaunchSpeed
 		auto DeltaRotation = AimAsRotation - BarrelRotator;
 		//UE_LOG(LogTemp, Warning, TEXT("Aiming at %s, Left %s to rotate On brand new Visual Studio"), *AimAsRotation.ToString(), *DeltaRotation.ToString())
 			Barrel->Elevate(DeltaRotation.Pitch);
+			Turret->Rotate(DeltaRotation.Yaw);
 	}

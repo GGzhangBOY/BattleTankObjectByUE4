@@ -32,6 +32,16 @@ void ATank::SetBarrelRef(UTankBarrel* BarrelToSet)
 	TankAimingComponent->SetBarrelRef(BarrelToSet);
 }
 
+void ATank::SetTurretRef(UTankTurret * TurretToSet)
+{
+	TankAimingComponent->SetTurretRef(TurretToSet);
+}
+
+void ATank::Firing()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Firing"));
+}
+
 // Called every frame
 void ATank::Tick(float DeltaTime)
 {
