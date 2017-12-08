@@ -42,10 +42,13 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation)
 	FVector WordDirection;
 	if (GetLookDirection(ScreenLocation, WordLocation, WordDirection)) {
 		//Get camera based start point and end point
-		FVector HitStart = PlayerCameraManager->GetCameraLocation();
+		FVector HitStart = PlayerCameraManager->GetCameraLocation();//TODO
 		FVector HitEnd = HitStart + HitRange*PlayerCameraManager->GetCameraRotation().Vector();
-		if (GetLookVectorHitLocation(HitStart, HitEnd, HitLocation)) {}
-		//UE_LOG(LogTemp, Warning, TEXT("Start:%s  End:%s"),*HitStart.ToString(),*HitEnd.ToString())
+		if (GetLookVectorHitLocation(HitStart, HitEnd, HitLocation)) 
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Start:%s  End:%s"), *HitStart.ToString(), *HitEnd.ToString())
+		}
+		
 	}
 	
 	return true;

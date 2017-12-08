@@ -70,7 +70,8 @@ void UTankAimingComponent::AimAtWorldSpace(FVector HitLocation,float LaunchSpeed
 	}
 	else
 	{
-		UE_LOG(LogTemp,Warning,TEXT("No solution found to hit at this location!"))
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp,Warning,TEXT("%f: No solution found to hit at this location!"),Time)
 	}
 	//UE_LOG(LogTemp, Warning, TEXT("Tank: %s aim at: %s from %s with the speed of %f"), *ThisTankName, *HitLocation.ToString(),*BarrelLocation.ToString(),LaunchSpeed)
 }

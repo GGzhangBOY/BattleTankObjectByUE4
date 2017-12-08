@@ -8,6 +8,7 @@
 
 class UTankBarrel;
 class UTankTurret;
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -43,4 +44,15 @@ private:
  
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 80000;		//Get the launch speed of 800m/s
+
+	UPROPERTY(EditAnywhere, Category = SetUp)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float ReloadTime = 5;
+
+	double LastFireTime;
+	UPROPERTY(EditAnywhere, Category = Firing)
+	// Set the position reference of the tank's barrel in Tank.h To modify the tank's projectile
+		UTankBarrel *Barrel = nullptr;
 };
